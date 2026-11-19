@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel="icon" href="images/artpfp.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Games I Play - Eldersson</title>
+    <meta property="og:title" content="Games I play - Eldersson">
+    <meta property="og:image" content="https://eldersson.com/images/artpfp.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eldersson.com/games">
+    <meta property="og:description" content="Official Eldersson's Profile Website :O">
+    <meta property="theme-color" content="#3EBAF7">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="floatingEmotes.js" defer></script>
+
+<style>
+    /* =========================
+       GAMES PAGE
+       ========================= */
+
+    .games-page {
+        max-width: 1100px;
+    }
+
+    .games-intro {
+        margin-bottom: 35px;
+    }
+
+    .games-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        width: 100%;
+    }
+
+    /* Individual game */
+
+    .game {
+        overflow: hidden;
+        border-radius: 18px;
+
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        transition:
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .game:hover {
+        transform: translateY(-8px);
+
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Vertical banner */
+
+    .game-banner {
+        width: 100%;
+        aspect-ratio: 2 / 3;
+
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Bottom section */
+
+    .game-bottom {
+        padding: 16px;
+    }
+
+    .game-name {
+        margin: 0 0 12px;
+
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    /* Actual progress bar */
+
+    .progress-bar {
+        width: 100%;
+        height: 14px;
+
+        border-radius: 999px;
+        overflow: hidden;
+
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .progress {
+        height: 100%;
+        width: var(--progress);
+
+        border-radius: inherit;
+
+        background: currentColor;
+
+        transform-origin: left;
+        animation: progressIn 1s ease forwards;
+    }
+
+    @keyframes progressIn {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    /* Navigation */
+
+    .games-page .page-buttons {
+        margin-top: 35px;
+    }
+
+    /* Smaller screens */
+
+    @media (max-width: 900px) {
+        .games-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 550px) {
+        .games-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .game-bottom {
+            padding: 10px;
+        }
+
+        .game-name {
+            font-size: 0.95rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<main class="page">
+
+<section class="profile-card games-page">
+
+    <h1>Games I Play</h1>
+
+    <p class="games-intro">
+        A totally scientific measurement of how good I am at games.
+    </p>
+
+    <div class="games-grid">
+
+        <!-- Minecraft -->
+        <article class="game">
+            <img
+                class="game-banner"
+                src="images/compressed_images/minecraft.webp"
+                alt="Minecraft"
+            >
+
+            <div class="game-bottom">
+                <h2 class="game-name">Minecraft</h2>
+
+                <div class="progress-bar">
+                    <div
+                        class="progress"
+                        style="--progress: 60%;"
+                    ></div>
+                </div>
+            </div>
+        </article>
+
+
+        <!-- osu! -->
+        <article class="game">
+            <img
+                class="game-banner"
+                src="images/compressed_images/osu.webp"
+                alt="osu!"
+            >
+
+            <div class="game-bottom">
+                <h2 class="game-name">osu!</h2>
+
+                <div class="progress-bar">
+                    <div
+                        class="progress"
+                        style="--progress: 30%;"
+                    ></div>
+                </div>
+            </div>
+        </article>
+
+
+        <!-- Geometry Dash -->
+        <article class="game">
+            <img
+                class="game-banner"
+                src="images/compressed_images/geometrydash.webp"
+                alt="Geometry Dash"
+            >
+
+            <div class="game-bottom">
+                <h2 class="game-name">Geometry Dash</h2>
+
+                <div class="progress-bar">
+                    <div
+                        class="progress"
+                        style="--progress: 75%;"
+                    ></div>
+                </div>
+            </div>
+        </article>
+
+
+        <!-- Valorant -->
+        <article class="game">
+            <img
+                class="game-banner"
+                src="images/compressed_images/valorant.webp"
+                alt="Valorant"
+            >
+
+            <div class="game-bottom">
+                <h2 class="game-name">Valorant</h2>
+
+                <div class="progress-bar">
+                    <div
+                        class="progress"
+                        style="--progress: 10%;"
+                    ></div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+
+    <nav class="page-buttons" aria-label="Pages">
+        <a href="index.html" class="page-button">Home</a>
+        <a href="about.html" class="page-button">About Me</a>
+        <a href="facts.html" class="page-button">Cool Facts</a>
+    </nav>
+
+</section>
+
+</main>
+
+<script>
+    window.addEventListener("load", () => {
+        if (typeof FloatingEmotes !== "undefined") {
+            FloatingEmotes.start({
+                images: ["images/emote_salute.png"],
+                count: 10,
+                size: 56,
+                bobHeight: 10,
+                bobSpeed: 0.6,
+                margin: 12
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

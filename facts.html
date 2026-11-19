@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel="icon" href="images/artpfp.png" type="image/png">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cool Facts - Eldersson</title>
+    <meta property="og:title" content="Cool Facts - Eldersson">
+    <meta property="og:image" content="https://eldersson.com/images/artpfp.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eldersson.com/facts">
+    <meta property="og:description" content="Official Eldersson's Profile Website :O">
+    <meta property="theme-color" content="#3EBAF7">
+
+<link rel="stylesheet" href="styles.css">
+<script src="floatingEmotes.js" defer></script>
+
+<!-- Clear reading font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+    /* =========================
+       FACTS PAGE
+       ========================= */
+
+    .facts-page {
+        max-width: 950px;
+    }
+
+    .facts-page,
+    .facts-page p,
+    .facts-page .fact-text {
+        font-family: "Inter", sans-serif;
+    }
+
+    .facts-page h1,
+    .facts-page h2,
+    .facts-page .next-button {
+        font-family: "Rubik", sans-serif;
+    }
+
+
+    /* =========================
+       INTRO
+       ========================= */
+
+    .facts-intro {
+        max-width: 650px;
+
+        margin: 0 auto 40px;
+
+        font-size: 1.05rem;
+        line-height: 1.7;
+
+        text-align: center;
+    }
+
+
+    /* =========================
+       FACT
+       ========================= */
+
+    .fact {
+        position: relative;
+
+        padding: 55px 65px;
+
+        border-radius: 28px;
+
+        background: rgba(255, 255, 255, 0.055);
+
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.18);
+
+        overflow: hidden;
+    }
+
+
+    /* Decorative number */
+
+    .fact-number {
+        position: absolute;
+
+        top: 15px;
+        right: 30px;
+
+        font-family: "Rubik", sans-serif;
+
+        font-size: clamp(5rem, 12vw, 9rem);
+
+        font-weight: 800;
+
+        line-height: 1;
+
+        opacity: 0.045;
+
+        user-select: none;
+        pointer-events: none;
+    }
+
+
+    /* FACT label */
+
+    .fact-label {
+        display: inline-block;
+
+        margin-bottom: 25px;
+
+        font-family: "Rubik", sans-serif;
+
+        font-size: 0.9rem;
+        font-weight: 700;
+
+        letter-spacing: 0.14em;
+
+        text-transform: uppercase;
+
+        opacity: 0.6;
+    }
+
+
+    /* Icon */
+
+    .fact-icon {
+        font-size: 3rem;
+
+        line-height: 1;
+
+        margin-bottom: 22px;
+    }
+
+
+    /* Fact title */
+
+    .fact h2 {
+        margin: 0 0 18px;
+
+        font-size: clamp(1.8rem, 4vw, 2.7rem);
+
+        line-height: 1.15;
+    }
+
+
+    /* Actual fact text */
+
+    .fact-text {
+        max-width: 760px;
+
+        margin: 0;
+
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+
+        line-height: 1.8;
+
+        opacity: 0.82;
+    }
+
+
+    /* =========================
+       NEXT BUTTON
+       ========================= */
+
+    .fact-controls {
+        display: flex;
+
+        justify-content: center;
+
+        margin-top: 25px;
+    }
+
+    .next-button {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        min-width: 190px;
+
+        padding: 15px 25px;
+
+        border-radius: 14px;
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        background: rgba(255, 255, 255, 0.07);
+
+        color: inherit;
+
+        font-size: 1rem;
+        font-weight: 700;
+
+        text-decoration: none;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .next-button:hover {
+        transform: translateY(-3px);
+
+        background: rgba(255, 255, 255, 0.12);
+
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .next-arrow {
+        margin-left: 10px;
+
+        font-size: 1.2rem;
+    }
+
+
+    /* =========================
+       PROGRESS
+       ========================= */
+
+    .fact-progress {
+        display: flex;
+
+        gap: 7px;
+
+        margin-top: 25px;
+    }
+
+    .fact-dot {
+        height: 5px;
+
+        flex: 1;
+
+        border-radius: 999px;
+
+        background: rgba(255, 255, 255, 0.1);
+
+        transition: background 0.25s ease;
+    }
+
+    .fact-dot.active {
+        background: rgba(255, 255, 255, 0.65);
+    }
+
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    .facts-page .page-buttons {
+        margin-top: 40px;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+
+        .fact {
+            padding: 35px 25px;
+        }
+
+        .fact-number {
+            right: 15px;
+            top: 10px;
+        }
+
+        .fact h2 {
+            font-size: 1.8rem;
+        }
+
+        .fact-text {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<main class="page">
+
+
+<section class="profile-card facts-page">
+
+    <h1>Cool Facts</h1>
+
+    <p class="facts-intro">
+        Some completely unnecessary information about me.
+        There is absolutely no reason you need to know any of this.
+    </p>
+
+
+    <!-- FACT -->
+
+    <article class="fact">
+
+        <span class="fact-number" id="fact-number">
+            01
+        </span>
+
+        <div class="fact-icon" id="fact-icon"></div>
+
+        <span class="fact-label" id="fact-label">
+            Fact 01
+        </span>
+
+        <h2 id="fact-title">
+            Potato tastes good!
+        </h2>
+
+        <p class="fact-text" id="fact-text">
+            If you didn't know it really does. Whatever the form ALWAYS tastes good.
+        </p>
+
+    </article>
+
+
+    <!-- PROGRESS -->
+
+    <div class="fact-progress" id="fact-progress">
+
+        <span class="fact-dot active"></span>
+        <span class="fact-dot"></span>
+        <span class="fact-dot"></span>
+        <span class="fact-dot"></span>
+        <span class="fact-dot"></span>
+        <span class="fact-dot"></span>
+
+    </div>
+
+
+    <!-- NEXT -->
+
+    <div class="fact-controls">
+
+        <button
+            class="next-button"
+            id="next-fact"
+            type="button"
+        >
+            Next Fact
+            <span class="next-arrow">→</span>
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="page-buttons" aria-label="Pages">
+
+        <a href="index.html" class="page-button">
+            Home
+        </a>
+
+        <a href="about.html" class="page-button">
+            About Me
+        </a>
+
+        <a href="games.html" class="page-button">
+            Games I Play
+        </a>
+
+    </nav>
+
+</section>
+
+
+</main>
+
+<script>
+    const facts = [
+        {
+            icon: "",
+            title: "Potato tastes good!",
+            text: "If you didn't know it really does. Whatever the form ALWAYS tastes good."
+        },
+        {
+            icon: "",
+            title: "Rexmin203 made my emotes.",
+            text: "They make some really cool stuff so go check them out, or else *insert gun pointing or something* (https://vgen.co/rexmin203)"
+        },
+        {
+            icon: "",
+            title: "DONT QUESTION THE UPLOAD SCHEDULE.",
+            text: "Just dont, ok"
+        },
+        {
+            icon: "",
+            title: "Tidal Wave.",
+            text: "It's a cool gd level, W song too its playing on background while making this lol"
+        },
+        {
+            icon: "",
+            title: "I play rhythm games.",
+            text: "osu! and Geometry Dash. What can you say they're generational bangers!"
+        },
+        {
+            icon: "",
+            title: "You should ❌ NEED TO SUBSCRIBE TO MY YOUTUBE CHANNEL AAAA",
+            text: "facts! (https://www.youtube.com/@Eldersson_YT?sub_confirmation=1)"
+        }
+    ];
+
+
+    let currentFact = 0;
+
+
+    const factNumber = document.getElementById("fact-number");
+    const factIcon = document.getElementById("fact-icon");
+    const factLabel = document.getElementById("fact-label");
+    const factTitle = document.getElementById("fact-title");
+    const factText = document.getElementById("fact-text");
+    const nextButton = document.getElementById("next-fact");
+    const dots = document.querySelectorAll(".fact-dot");
+
+
+    // Automatically turns https:// URLs into clickable links
+    function linkify(text) {
+    return text.replace(
+        /(https:\/\/[^\s<]+?)([.,!?;:)]+)?(?=\s|$)/g,
+        (match, url, punctuation) => {
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${punctuation || ""}`;
+        }
+    );
+}
+
+
+    function showFact(index) {
+
+        const fact = facts[index];
+
+        factNumber.textContent =
+            String(index + 1).padStart(2, "0");
+
+        factIcon.textContent = fact.icon;
+
+        factLabel.textContent =
+            `Fact ${String(index + 1).padStart(2, "0")}`;
+
+        factTitle.textContent = fact.title;
+
+        // Make URLs clickable
+        factText.innerHTML = linkify(fact.text);
+
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+        });
+
+
+        nextButton.innerHTML =
+            index === facts.length - 1
+                ? 'Start Again <span class="next-arrow">↻</span>'
+                : 'Next Fact <span class="next-arrow">→</span>';
+    }
+
+
+    nextButton.addEventListener("click", () => {
+
+        currentFact++;
+
+        if (currentFact >= facts.length) {
+            currentFact = 0;
+        }
+
+        showFact(currentFact);
+
+    });
+</script>
+
+<script>
+    window.addEventListener("load", () => {
+
+        if (typeof FloatingEmotes !== "undefined") {
+
+            FloatingEmotes.start({
+
+                images: ["images/emote_salute.png"],
+
+                count: 10,
+
+                size: 56,
+
+                bobHeight: 10,
+
+                bobSpeed: 0.6,
+
+                margin: 12
+
+            });
+
+        }
+
+    });
+</script>
+
+</body>
+</html>
