@@ -3,6 +3,11 @@
     src: url("../fonts/BoldsPixels.ttf") format("truetype");
     font-display: swap;
 }
+@font-face {
+    font-family: "NerdFont";
+    src: url("../fonts/JetBrainsMono-Regular.ttf") format("truetype");
+    font-display: swap;
+}
 
 * {
     box-sizing: border-box;
@@ -16,7 +21,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 40px 20px;
-    font-family: "BoldPixels", system-ui, sans-serif;
+    font-family: "NerdFont", system-ui, sans-serif;
     color: #ffffff;
     background: linear-gradient(135deg, #139cec 0%, #1c6afa 100%);
     overflow-x: hidden;

@@ -7,6 +7,7 @@
     <title>Eldersson</title>
     <link rel="stylesheet" href="styles.css">
     <script src="floatingEmotes.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <meta property="og:title" content="Eldersson">
     <meta property="og:image" content="https://eldersson.com/images/artpfp.png">
@@ -17,6 +18,15 @@
 </head>
 
 <body>
+    <script>
+        var channelID = "UCptp6Fo_1Xy2K7zqJc2fACQ";
+        var reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
+        $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
+            var link = data.items[0].link;
+            var id = link.substr(link.indexOf("=")+1);
+        $("#youtube_video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
+});
+    </script>
     <main class="page">
         <section class="profile-card">
             <img
@@ -61,6 +71,9 @@
                 <a href="https://steamcommunity.com/id/Eldersson" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Steam">
                     <img src="images/steam.png" alt="">
                 </a>
+                <a href="https://github.com/Eldersson1§" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Steam">
+                    <img src="images/github.png" alt="">
+                </a>
             </div>
 
             <nav class="page-buttons" aria-label="Pages">
@@ -68,6 +81,18 @@
                 <a href="facts.html" class="page-button">Cool facts. lol</a>
                 <a href="games.html" class="page-button">Games I play</a>
             </nav>
+        </section>
+        <section class="profile-card stream-card">
+            <h2>Latest upload</h2>
+            <iframe id="youtube_video" class="twitch-container" style="aspect-ratio: 16 / 9;" allowfullscreen></iframe>
+        </section>
+
+        <section class="profile-card">
+            <h2>Next upload</h2>
+            <h3 style="text-align: left;">Planning: still doing</h3>
+            <h3 style="text-align: left;">Filming: Not started</h3>
+            <h3 style="text-align: left;">Editing: thats propably gonna take a bit</h3>
+            <h3 style="text-align: left;"></h3>
         </section>
 
         <section class="profile-card stream-card">
@@ -92,6 +117,10 @@
         sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
     </iframe>
 </section>
+    <section class="profile-card">
+        <h2>Do I have good taste in music?</h2>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3m8Q3hfI9F5PSeHpBYS4y4?utm_source=generator&theme=0&si=e8d05082fe2f4d88" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </section>
     </main>
     <a href="secret.html" class="page-button" style="width:100px; margin-top: -70px; cursor:pointer">secret</a>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
